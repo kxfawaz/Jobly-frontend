@@ -52,7 +52,10 @@ class JoblyApi {
     return res.jobs;
   }
   static async applyJob(username, jobId){
-    let res = await this.request(`users/${username}/jobs/${jobId}`, {}, "post")
+    let res = await this.request(
+      
+      
+      `users/${username}/jobs/${jobId}`, {}, "post")
     return res.applied
 }
 
@@ -60,14 +63,14 @@ class JoblyApi {
 static async login(credentials) {
   const res = await this.request("auth/token", credentials, "post");
   // res is the JSON object returned by the backend
-  return res.token; 
+  return res.data; 
 }
 
 // Sign up: send new user data to auth/register endpoint, return the JWT token
 static async signup(data) {
   const res = await this.request("auth/register", data, "post");
   // Need `await` here to actually get the resolved API response
-  return res.token; 
+  return res.data;
 }
 
 
